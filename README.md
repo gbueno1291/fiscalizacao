@@ -1,4 +1,4 @@
-# Fiscalizaçãos
+# Fiscalização
 
 O objetivo deste projeto é cadastrar áreas para facilitar a fiscalização.
 
