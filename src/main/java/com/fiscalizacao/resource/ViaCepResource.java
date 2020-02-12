@@ -16,7 +16,7 @@ import com.fiscalizacao.service.ViaCepService;
 @RequestMapping("/viaCep")
 public class ViaCepResource {
 	
-	@Autowired
+	@Autowired 
 	ViaCepService viaService;
 	
 	@GetMapping(value="/getCep/{cep}")

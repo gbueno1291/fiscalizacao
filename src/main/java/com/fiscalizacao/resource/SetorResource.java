@@ -49,7 +49,7 @@ public class SetorResource {
        return ResponseEntity.ok(set);
 	}
 	
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") 
     public ResponseEntity<Integer> deleteSetorId(@PathVariable Integer id) {
             setorService.deletarSetor(id);
               return ResponseEntity.ok(id);

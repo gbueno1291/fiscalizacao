@@ -35,6 +35,7 @@ public class ViaCepService {
 			ResponseEntity<List<EnderecoDTO>> listEnderecoRest = restTemplate.exchange(uri, HttpMethod.GET, null,
 					new ParameterizedTypeReference<List<EnderecoDTO>>() {
 					});
+			
 			enderecosDTO = listEnderecoRest.getBody();
 
 		} catch (Exception e) {
