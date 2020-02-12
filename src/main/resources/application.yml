@@ -30,10 +30,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         
-api-externa:
-  exterior:
-    viacep: https://viacep.com.br/ws/SP/Paraguacu Paulista/Santosaa/json/
-     
 app:
   version: #project.version#
 server:
@@ -75,9 +71,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
-api-externa:
-  exterior:
-    viacep: https://viacep.com.br/ws/SP/Paraguacu Paulista/Santos/json/
     
 app:
   version: #project.version#
