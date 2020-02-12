@@ -33,13 +33,35 @@ private SpringProperties spring;
 
         private Map<String, String> datasource;
 
-        public Map<String, String> getDatasource() {
+        
+		public Map<String, String> getDatasource() {
             return datasource;
         }
 
         public void setDatasource(Map<String, String> datasource) {
             this.datasource = datasource;
         }
+        
+
+    }
+    
+    @Configuration
+    @EnableConfigurationProperties
+    @ConfigurationProperties(prefix = "api-externa")
+    public class ApiExterna {
+
+        private Map<String, String> exterior;
+
+		public Map<String, String> getExterior() {
+			return exterior;
+		}
+
+		public void setExterior(Map<String, String> exterior) {
+			this.exterior = exterior;
+		}
+
+                
+
     }
 
 }
