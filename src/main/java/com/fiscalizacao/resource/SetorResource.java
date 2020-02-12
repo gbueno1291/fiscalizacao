@@ -45,13 +45,13 @@ public class SetorResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Setor> cadastrarSetor(@Valid @RequestBody Setor setor) {
-	   Setor set = setorRepository.save(setor);
+	   Setor set = setorService.salvarSetor(setor);
        return ResponseEntity.ok(set);
 	}
 	
     @DeleteMapping("/{id}")
     public ResponseEntity<Integer> deleteSetorId(@PathVariable Integer id) {
-            setorRepository.deleteById(id);
+            setorService.deletarSetor(id);
               return ResponseEntity.ok(id);
     }
 	

@@ -59,12 +59,12 @@ public class FiscalizacaoExceptionHandler extends ResponseEntityExceptionHandler
 	
 	@Getter
 	public class Erro{
-		private String mensagemUsurio;
+		private String mensagemUsuario;
 		private String mensagemDesenvolvedor;
 		
 		public Erro(String mensagemUsurio, String mensagemDesenvolvedor) {
 			super();
-			this.mensagemUsurio = mensagemUsurio;
+			this.mensagemUsuario = mensagemUsurio;
 			this.mensagemDesenvolvedor = mensagemDesenvolvedor;
 		}
 		
