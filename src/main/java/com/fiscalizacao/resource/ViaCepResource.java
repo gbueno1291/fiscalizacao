@@ -13,15 +13,21 @@ import com.fiscalizacao.dto.EnderecoDTO;
 import com.fiscalizacao.service.ViaCepService;
 
 @RestController
-@RequestMapping("/viaCep")
+@RequestMapping("/viacep")
 public class ViaCepResource {
 	
 	@Autowired 
 	ViaCepService viaService;
 	
-	@GetMapping(value="/getCep/{cep}")
-	  public ResponseEntity<List<EnderecoDTO>> getCep(@PathVariable(name = "cep") String cep) {
-		  return ResponseEntity.ok().body(viaService.getEndereço(cep));
+	@GetMapping(value="/{estado}/{cidade}/{endereco}")
+	  public ResponseEntity<List<EnderecoDTO>> getCepViaEndereco(@PathVariable(name = "estado") String estado,
+			  @PathVariable(name = "cidade") String cidade,@PathVariable(name = "endereco") String endereco) {
+		  return ResponseEntity.ok().body(viaService.getCepByEndereco(estado,cidade,endereco));
 		 
 	  }
+	@GetMapping(value="/{cep}")
+	  public ResponseEntity<EnderecoDTO> getCep(@PathVariable(name = "cep") String cep) {
+	    return viaService.getEnderecoByCep(cep);
+	  }
+
 }

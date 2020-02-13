@@ -44,24 +44,5 @@ private SpringProperties spring;
         
 
     }
-    
-    @Configuration
-    @EnableConfigurationProperties
-    @ConfigurationProperties(prefix = "api-externa")
-    public class ApiExterna {
-
-        private Map<String, String> exterior;
-
-		public Map<String, String> getExterior() {
-			return exterior;
-		}
-
-		public void setExterior(Map<String, String> exterior) {
-			this.exterior = exterior;
-		}
-
-                
-
-    }
 
 }
