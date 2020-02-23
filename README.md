@@ -1,5 +1,9 @@
 # Fiscalização
+<<<<<<< HEAD
    
+=======
+ 
+>>>>>>> f2450866f5caa990027059f10f4e7b5d803807a2
 O objetivo deste projeto é cadastrar áreas para facilitar a fiscalização.
 
 ### Baseado no [Building an Application with Spring Boot](https://spring.io/guides/gs/spring-boot/).
