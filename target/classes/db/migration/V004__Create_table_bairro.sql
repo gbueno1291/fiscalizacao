@@ -1,9 +1,0 @@
-CREATE TABLE IF NOT EXISTS bairro (
-    id INT AUTO_INCREMENT,
-    setor_id INT NOT NULL,
-    descricao VARCHAR(100) NOT NULL,
-    data_criacao TIMESTAMP NOT NULL,
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-     CONSTRAINT fk_bairro_setor FOREIGN KEY (setor_id) REFERENCES setor(id)
-)  ENGINE=INNODB;
