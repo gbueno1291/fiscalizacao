@@ -5,7 +5,9 @@ import com.fiscalizacao.utils.Utils;
 public class appTeste {
 
 	public static void main(String[] args) {
-		String texto = "Máis é um Téste apênas";
-		System.out.println(Utils.getInstance().stringNormalize(texto));
+		
+		String cpf = "392.350.648-13";
+		boolean valido  = Utils.isCPF(cpf);
+		System.out.println(valido);
 	}
 }
