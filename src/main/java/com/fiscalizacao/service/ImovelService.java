@@ -32,10 +32,7 @@ public class ImovelService {
 		   return novoImovel;
 		}
 		
-<<<<<<< HEAD
-		
-=======
->>>>>>> remodelagemDB
+
 		public void deletaImovel(Integer id) {
 			imovelRepository.deleteById(id);
 			

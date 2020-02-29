@@ -1,10 +1,8 @@
 package com.fiscalizacao.models;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.math.BigDecimal;
-=======
->>>>>>> remodelagemDB
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,16 +25,12 @@ import lombok.Setter;
 @Table(name="imovel")
 public class Imovel implements Serializable {
 
-<<<<<<< HEAD
    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-=======
-   public static final long SerialVersionUID = 1L;
    
->>>>>>> remodelagemDB
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
@@ -64,7 +58,6 @@ public class Imovel implements Serializable {
    
    @Column(name="valorvenalterreno")
    @NotNull
-<<<<<<< HEAD
    private BigDecimal valorvenalterreno;
    
    @Column(name="valorvenaledificacao")
@@ -74,17 +67,6 @@ public class Imovel implements Serializable {
    @Column(name="valorvenalimovel")
    @NotNull
    private BigDecimal valorvenalimovel;
-=======
-   private float valorvenalterreno;
-   
-   @Column(name="valorvenaledificacao")
-   @NotNull
-   private float valorvenaledificacao;
-   
-   @Column(name="valorvenalimovel")
-   @NotNull
-   private float valorvenalimovel;
->>>>>>> remodelagemDB
    
    @Column(name="cep")
    @NotNull
