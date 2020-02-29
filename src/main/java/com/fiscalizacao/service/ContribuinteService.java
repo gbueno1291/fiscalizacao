@@ -3,8 +3,10 @@ package com.fiscalizacao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fiscalizacao.exceptionHandler.MsgException;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
+import com.fiscalizacao.utils.Utils;
 
 @Service
 public class ContribuinteService {
@@ -25,6 +27,9 @@ public class ContribuinteService {
 	public Contribuinte SalvaContribuinte(Contribuinte contribuinte) {
 		Contribuinte novoContribuinte = new Contribuinte();
 	   try {
+		   if(!Utils.isCPF(contribuinte.getCpf())) {
+		       throw new MsgException("Cpf Invalido","Informe um CPF valido!" );
+		   }
 		   novoContribuinte = contribuinteRepository.save(contribuinte);
 	} catch (Exception e) {
 		e.printStackTrace();
