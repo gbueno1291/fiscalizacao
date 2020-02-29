@@ -1,7 +1,11 @@
 CREATE TABLE IF NOT EXISTS imovel (
     id INT AUTO_INCREMENT,
     cadastro INT NOT NULL,
+<<<<<<< HEAD
     contribuinteid int,
+=======
+    contribuinteid int NOT NULL,
+>>>>>>> remodelagemDB
     setor INT NOT NULL,
     quadra INT NOT NULL,
     lote VARCHAR(8) NOT NULL,

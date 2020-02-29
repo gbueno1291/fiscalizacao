@@ -1,6 +1,9 @@
 package com.fiscalizacao.models;
 
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+>>>>>>> remodelagemDB
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name="contribuinte")
+<<<<<<< HEAD
 public class Contribuinte implements Serializable{
 
 	/**
@@ -27,6 +31,12 @@ public class Contribuinte implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+=======
+public class Contribuinte {
+
+	public static final long SerialVersionUID = 1L;
+	
+>>>>>>> remodelagemDB
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
