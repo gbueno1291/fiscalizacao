@@ -1,5 +1,6 @@
 package com.fiscalizacao.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="contribuinte")
-public class Contribuinte {
+public class Contribuinte implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
