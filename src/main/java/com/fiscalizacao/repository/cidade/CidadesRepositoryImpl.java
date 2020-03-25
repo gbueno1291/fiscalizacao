@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
 import com.fiscalizacao.models.Cidades;
 import com.fiscalizacao.repository.filter.CidadeFilter;
 
-public class CidadeRepositoryImpl implements CidadeRepositoryQuery{
+public class CidadesRepositoryImpl implements CidadesRepositoryQuery{
 
 	
 	@PersistenceContext

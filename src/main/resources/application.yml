@@ -4,7 +4,7 @@ cupom:
     porta: 3306
     database: fiscalizacao
     usuario: root
-    senha: 
+    senha: Solicit3
 spring.main.allow-bean-definition-overriding: true
         
 spring:
@@ -29,6 +29,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: true
+        format_sql: true
         
 app:
   version: #project.version#

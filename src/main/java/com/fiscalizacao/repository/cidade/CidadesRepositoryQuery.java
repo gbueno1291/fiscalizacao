@@ -7,7 +7,7 @@ import com.fiscalizacao.models.Cidades;
 import com.fiscalizacao.repository.filter.CidadeFilter;
 
 
-public interface CidadeRepositoryQuery {
+public interface CidadesRepositoryQuery {
 
 	public List<Cidades> filtrar(CidadeFilter cidadeFilter);
 }
