@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiscalizacao.models.Cidades;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
+import com.fiscalizacao.repository.filter.CidadeFilter;
+import com.fiscalizacao.repository.filter.ContribuinteFilter;
 import com.fiscalizacao.service.ContribuinteService;
 
 @RestController
@@ -31,9 +34,9 @@ public class ContribuinteResource {
 	ContribuinteService contribuinteService;
 	
 	@GetMapping
-	public ResponseEntity<List<Contribuinte>> findAll(){
-		List<Contribuinte>  listContribuinte = contribuinteRepository.findAll();
-		return ResponseEntity.ok(listContribuinte);
+	public List<Contribuinte> pesquisa(ContribuinteFilter contribuinteFilter){
+		return contribuinteRepository.fitrar(contribuinteFilter);
+		
 	}
 	
 	@GetMapping("/{id}")

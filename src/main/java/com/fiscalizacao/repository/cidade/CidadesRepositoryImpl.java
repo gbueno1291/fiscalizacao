@@ -43,6 +43,9 @@ public class CidadesRepositoryImpl implements CidadesRepositoryQuery{
 		if(!StringUtils.isEmpty(cidadeFilter.getNome())) {
 			predicates.add(buider.like(buider.lower(root.get("nome")), "%" + cidadeFilter.getNome().toLowerCase() + "%"));
 		}
+		if(!StringUtils.isEmpty(cidadeFilter.getUf())) {
+			predicates.add(buider.equal(buider.lower(root.get("uf")), cidadeFilter.getUf().toLowerCase()));
+		}
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

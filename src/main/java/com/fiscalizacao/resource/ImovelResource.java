@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.models.Imovel;
-import com.fiscalizacao.repository.ContribuinteRepository;
 import com.fiscalizacao.repository.ImovelRepository;
-import com.fiscalizacao.service.ContribuinteService;
+import com.fiscalizacao.repository.filter.ImovelFilter;
 import com.fiscalizacao.service.ImovelService;
 
 @RestController
@@ -33,9 +31,9 @@ public class ImovelResource {
 	ImovelService imovelService;
 	
 	@GetMapping
-	public ResponseEntity<List<Imovel>> findAll(){
-		List<Imovel>  listImovel = imovelRepository.findAll();
-		return ResponseEntity.ok(listImovel);
+	public List<Imovel> findAll(ImovelFilter imovelFilter){
+		return imovelRepository.filtrar(imovelFilter);
+		 
 	}
 	
 	@GetMapping("/{id}")

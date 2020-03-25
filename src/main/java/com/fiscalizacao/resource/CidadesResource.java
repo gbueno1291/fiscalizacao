@@ -33,7 +33,7 @@ public class CidadesResource {
 	CidadesService cidadesService;
 	
 	@GetMapping
-	public List<Cidades> pesquisar(CidadeFilter cidadeFilter){
+	public List<Cidades> findAll(CidadeFilter cidadeFilter){
 		 return cidadesRepository.filtrar(cidadeFilter);
 		
 	}

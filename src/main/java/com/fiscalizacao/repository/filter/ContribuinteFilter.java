@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CidadeFilter {
+public class ContribuinteFilter {
     private String nome;
-    private String uf;
+    private String cpf;
+    private String logradouro;
+    private String numero;
 }
