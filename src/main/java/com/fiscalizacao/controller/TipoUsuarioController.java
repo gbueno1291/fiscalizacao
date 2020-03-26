@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import com.fiscalizacao.service.TipoUsuarioService;
 
 @RestController
 @RequestMapping("/tipouser")
-public class TipoUsuarioResource {
+public class TipoUsuarioController {
 
 	@Autowired
 	TipoUsuarioRepository tipoUsuarioRepository;

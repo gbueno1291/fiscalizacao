@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import com.fiscalizacao.service.ViaCepService;
 
 @RestController
 @RequestMapping("/viacep")
-public class ViaCepResource {
+public class ViaCepController {
 	
 	@Autowired 
 	ViaCepService viaService;

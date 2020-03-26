@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import javax.naming.AuthenticationException;
 import javax.validation.Valid;

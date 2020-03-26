@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import com.fiscalizacao.service.ParametrizaService;
 
 @RestController
 @RequestMapping("/parametriza")
-public class ParametrizaResource {
+public class ParametrizaController {
 
 	@Autowired
 	ParametrizaRepository parametrizaRepository;

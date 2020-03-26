@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import com.fiscalizacao.service.CidadesService;
 
 @RestController
 @RequestMapping("/cidades")
-public class CidadesResource {
+public class CidadesController {
 
 	@Autowired
 	CidadesRepository cidadesRepository;

@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import com.fiscalizacao.service.ImovelService;
 
 @RestController
 @RequestMapping("/imovel")
-public class ImovelResource {
+public class ImovelController {
 	@Autowired
 	ImovelRepository imovelRepository;
 	

@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import com.fiscalizacao.service.ContribuinteService;
 
 @RestController
 @RequestMapping("/contribuinte")
-public class ContribuinteResource {
+public class ContribuinteController {
 
 	@Autowired
 	ContribuinteRepository contribuinteRepository;

@@ -1,4 +1,4 @@
-package com.fiscalizacao.resource;
+package com.fiscalizacao.controller;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import com.fiscalizacao.service.EmitenteService;
 
 @RestController
 @RequestMapping("/emitente")
-public class EmitenteResource {
+public class EmitenteController {
 
 	@Autowired
 	EmitenteRepository emitenteRepository;
