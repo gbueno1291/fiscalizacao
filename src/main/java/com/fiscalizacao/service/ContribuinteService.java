@@ -1,11 +1,9 @@
 package com.fiscalizacao.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fiscalizacao.exceptionHandler.MsgException;
+import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
 import com.fiscalizacao.utils.Utils;
@@ -26,17 +24,14 @@ public class ContribuinteService {
 		return contribuinte;
 	}
 	
-	public Contribuinte SalvaContribuinte(Contribuinte contribuinte) {
+	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException {
 		Contribuinte novoContribuinte = new Contribuinte();
-	   try {
-		   if(!Utils.isCPF(contribuinte.getCpf())) {
-		       throw new MsgException("Cpf Invalido","Informe um CPF valido!" );
-		   }
-		   novoContribuinte = contribuinteRepository.save(contribuinte);
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	   return novoContribuinte;
+			if (!Utils.isCPF(contribuinte.getCpf())) {
+				throw new CPFInvalidoException();
+			}
+			novoContribuinte = contribuinteRepository.save(contribuinte);
+
+		return novoContribuinte;
 	}
 	
 	public void deletaContribuinte(Integer id) {

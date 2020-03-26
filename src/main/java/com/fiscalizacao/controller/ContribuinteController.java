@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
 import com.fiscalizacao.models.Cidades;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
@@ -47,9 +48,9 @@ public class ContribuinteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) {
-		Contribuinte gravaContribuinte = contribuinteService.SalvaContribuinte(contribuinte);
-       return ResponseEntity.ok(gravaContribuinte);
+	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) throws CPFInvalidoException {
+		Contribuinte salvaContribuinte = contribuinteService.salvaContribuinte(contribuinte);
+       return ResponseEntity.ok(salvaContribuinte);
 	}
 	
     @DeleteMapping("/{id}") 
