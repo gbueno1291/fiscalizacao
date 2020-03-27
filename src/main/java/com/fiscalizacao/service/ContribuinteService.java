@@ -2,7 +2,7 @@ package com.fiscalizacao.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.fiscalizacao.exceptionHandler.CPFExistenteException;
 import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
@@ -24,12 +24,17 @@ public class ContribuinteService {
 		return contribuinte;
 	}
 	
-	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException {
+	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException {
 		Contribuinte novoContribuinte = new Contribuinte();
 			if (!Utils.isCPF(contribuinte.getCpf())) {
 				throw new CPFInvalidoException();
 			}
-			novoContribuinte = contribuinteRepository.save(contribuinte);
+			try {
+				novoContribuinte = contribuinteRepository.save(contribuinte);
+				
+			} catch (Exception e) {
+				throw new CPFExistenteException();
+			}
 
 		return novoContribuinte;
 	}
