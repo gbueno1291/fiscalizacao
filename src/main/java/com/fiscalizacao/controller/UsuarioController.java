@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiscalizacao.exceptionHandler.CPFExistenteException;
+import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
 import com.fiscalizacao.models.Usuario;
 import com.fiscalizacao.repository.UsuarioRepository;
 import com.fiscalizacao.service.UsuarioService;
@@ -44,7 +46,7 @@ public class UsuarioController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Usuario> cadastrarUsuario(@Valid @RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> cadastrarUsuario(@Valid @RequestBody Usuario usuario) throws CPFInvalidoException, CPFExistenteException {
 	   Usuario gravaUsuario = usuarioService.SalvarUsuario(usuario);
        return ResponseEntity.ok(gravaUsuario);
 	}

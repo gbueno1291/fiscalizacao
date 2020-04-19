@@ -3,9 +3,9 @@ package com.fiscalizacao.exceptionHandler;
 public enum Errors {
 
     // @formatter:off
-    ERRO_1("Erro ao fodao!!"),
+    ERRO_1("CPF já existe!"),
     ERRO_2("CPF informado é inválido"),
-	ERRO_99("Erro inexperado"), ;
+	ERRO_99("Erro inexperado"),;
     // @formatter:on
 
     private String errorCode;

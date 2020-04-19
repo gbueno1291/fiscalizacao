@@ -4,7 +4,7 @@ cupom:
     porta: 3306
     database: fiscalizacao
     usuario: root
-    senha: Solicit3
+    senha: 
 spring.main.allow-bean-definition-overriding: true
         
 spring:

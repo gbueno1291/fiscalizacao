@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiscalizacao.exceptionHandler.CPFExistenteException;
 import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
-import com.fiscalizacao.models.Cidades;
 import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.repository.ContribuinteRepository;
-import com.fiscalizacao.repository.filter.CidadeFilter;
 import com.fiscalizacao.repository.filter.ContribuinteFilter;
 import com.fiscalizacao.service.ContribuinteService;
 
@@ -48,7 +47,7 @@ public class ContribuinteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) throws CPFInvalidoException {
+	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException {
 		Contribuinte salvaContribuinte = contribuinteService.salvaContribuinte(contribuinte);
        return ResponseEntity.ok(salvaContribuinte);
 	}

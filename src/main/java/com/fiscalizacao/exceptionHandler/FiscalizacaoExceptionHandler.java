@@ -5,9 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContext;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,6 +44,9 @@ public class FiscalizacaoExceptionHandler extends ResponseEntityExceptionHandler
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 	
+	
+	
+
 	public List<Erro> criarListaErros(BindingResult bindResult){
 		List<Erro> erros = new ArrayList<>();
 		for (FieldError fieldError : bindResult.getFieldErrors()) {
