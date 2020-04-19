@@ -1,5 +1,8 @@
 package com.fiscalizacao.configs.security;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +15,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.fiscalizacao.repository.UsuarioRepository;
 
@@ -34,6 +41,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 	
+	@Bean
+	 public AuthenticationEntryPoint authenticationEntryPoint(){
+	     return new CustomAuthenticationEntryPoint();
+	 }
+	
 	//Configurações de autenticacao
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,11 +56,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	//Configurações de Autorizações
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
+		http.cors().and().csrf().disable()
+		.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint()).and()
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		.authorizeRequests().antMatchers("/auth/**").permitAll()
 		.anyRequest().authenticated()
-		.and().csrf().disable()
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService,usuarioRepository), UsernamePasswordAuthenticationFilter.class);
 	}
 	
@@ -57,4 +69,5 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 
 	}
+	
 }
