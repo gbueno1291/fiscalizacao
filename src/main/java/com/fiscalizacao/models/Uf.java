@@ -7,14 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-<<<<<<< Updated upstream
-import javax.validation.constraints.Size;
-=======
->>>>>>> Stashed changes
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,31 +16,25 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name="cidades")
-public class Cidades implements Serializable{
+@Table(name="uf")
+public class Uf implements Serializable{
 
+	/**
+	 * DESENVOLVIDO POR GILIARDI BUENO
+	 */
 	private static final long serialVersionUID = 1L;
-    
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    private int id;
 	
-	@Column(name = "nome")
+	@Column(name="nome")
 	@NotNull
-<<<<<<< Updated upstream
-	@Size(min= 3, max = 30)
-	private  String nome;
+    public String nome;
 	
-	@Column(name = "uf")
+	@Column(name="sigla")
 	@NotNull
-	private String uf;
-=======
-	public  String nome;
->>>>>>> Stashed changes
-	
-    @ManyToOne
-    @JoinColumn(name = "uf")
-	public Uf uf;
+    public String sigla;
 
 	@Override
 	public int hashCode() {
@@ -54,7 +42,7 @@ public class Cidades implements Serializable{
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
 		return result;
 	}
 
@@ -66,7 +54,7 @@ public class Cidades implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cidades other = (Cidades) obj;
+		Uf other = (Uf) obj;
 		if (id != other.id)
 			return false;
 		if (nome == null) {
@@ -74,13 +62,14 @@ public class Cidades implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (uf == null) {
-			if (other.uf != null)
+		if (sigla == null) {
+			if (other.sigla != null)
 				return false;
-		} else if (!uf.equals(other.uf))
+		} else if (!sigla.equals(other.sigla))
 			return false;
 		return true;
 	}
-    
 	
+	
+    
 }

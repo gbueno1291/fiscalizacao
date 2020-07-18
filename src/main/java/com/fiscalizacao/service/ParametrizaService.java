@@ -3,7 +3,7 @@ package com.fiscalizacao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fiscalizacao.models.Parametriza;
+import com.fiscalizacao.models.TerrenoSujo;
 import com.fiscalizacao.repository.ParametrizaRepository;
 
 @Service
@@ -12,8 +12,8 @@ public class ParametrizaService {
 	@Autowired
 	ParametrizaRepository parametrizaRepository;
 	
-	public Parametriza findById(Integer id) {
-		Parametriza parametriza  = new Parametriza();
+	public TerrenoSujo findById(Integer id) {
+		TerrenoSujo parametriza  = new TerrenoSujo();
 		try {
 			parametriza = parametrizaRepository.findById(id).orElse(null);
 		} catch (Exception e) {
@@ -21,8 +21,8 @@ public class ParametrizaService {
 		}
 		return parametriza;
 	}
-	public Parametriza SalvaParametriza(Parametriza parametriza) {
-		 Parametriza novoParametriza = new Parametriza();
+	public TerrenoSujo SalvaParametriza(TerrenoSujo parametriza) {
+		 TerrenoSujo novoParametriza = new TerrenoSujo();
 		 try {
 			novoParametriza = parametrizaRepository.save(parametriza);
 		} catch (Exception e) {

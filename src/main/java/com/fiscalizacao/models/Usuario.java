@@ -20,8 +20,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -71,7 +69,6 @@ public class Usuario implements UserDetails {
 	private int status;
 
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name = "tipouser")
 	public TipoUsuario tipouser;
 

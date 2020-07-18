@@ -41,6 +41,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 	
+	
 	@Bean
 	 public AuthenticationEntryPoint authenticationEntryPoint(){
 	     return new CustomAuthenticationEntryPoint();
@@ -59,7 +60,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 		.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint()).and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-		.authorizeRequests().antMatchers("/auth/**").permitAll()
+		.authorizeRequests().antMatchers("/auth/**").permitAll().and()
+		.authorizeRequests().antMatchers("/tipodocumento/**").permitAll().and()
+		.authorizeRequests().antMatchers("/emitente/**").permitAll()
 		.anyRequest().authenticated()
 		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService,usuarioRepository), UsernamePasswordAuthenticationFilter.class);
 	}

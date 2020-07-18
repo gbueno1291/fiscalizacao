@@ -16,7 +16,7 @@ public class FlywayConfig {
 				.dataSource(ymlConfig.getSpring().getDatasource().get("url"),
 						ymlConfig.getSpring().getDatasource().get("username"),
 						ymlConfig.getSpring().getDatasource().get("password"))
-				.baselineDescription("Migração do banco de dados da API-LATICINIO").baselineOnMigrate(true)
+				.baselineDescription("Migração do banco de dados da API-FISCALIZA").baselineOnMigrate(true)
 				.schemas(ymlConfig.getSpring().getDatasource().get("database")).outOfOrder(true).cleanDisabled(true)
 				.load();
 		flyway.repair();

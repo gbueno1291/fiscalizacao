@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,9 +20,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name="parametriza")
+@Table(name="terrenoSujo")
 @NoArgsConstructor
-public class Parametriza implements Serializable {
+public class TerrenoSujo implements Serializable {
 
 	/**
 	 * 
@@ -47,7 +46,7 @@ public class Parametriza implements Serializable {
 	   @DateTimeFormat(pattern = "dd/MM/yyyy")
 	   public Date ano;
 	   
-	   public Parametriza(int id, BigDecimal valorUfm, BigDecimal valTerreno, BigDecimal precoMQ, Date ano ) {
+	   public TerrenoSujo(int id, BigDecimal valorUfm, BigDecimal valTerreno, BigDecimal precoMQ, Date ano ) {
 		   this.id = id;
 		   this.valorUfm = valorUfm;
 		   this.valTerreno = valTerreno;

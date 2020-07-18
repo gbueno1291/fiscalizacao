@@ -16,44 +16,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiscalizacao.models.Cidades;
-import com.fiscalizacao.repository.CidadesRepository;
-import com.fiscalizacao.repository.filter.CidadeFilter;
-import com.fiscalizacao.service.CidadesService;
+import com.fiscalizacao.models.Uf;
+import com.fiscalizacao.repository.UfRepository;
+import com.fiscalizacao.service.UfService;
 
 @RestController
-@RequestMapping("/cidades")
-public class CidadesController {
+@RequestMapping("/uf")
+public class UfController {
 
 	@Autowired
-	CidadesRepository cidadesRepository;
+	UfRepository ufRepository;
 	
 	@Autowired
-	CidadesService cidadesService;
+	UfService ufService;
 	
 	@GetMapping
-	public List<Cidades> findAll(CidadeFilter cidadeFilter){
-		 return cidadesRepository.filtrar(cidadeFilter);
+	public ResponseEntity<List<Uf>> pesquisar(){
+		 List<Uf> ListUf = ufRepository.findAll();
+		 return ResponseEntity.ok(ListUf);
 		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Cidades>  buscaPorId(@PathVariable Integer id){
-		Cidades cidades = cidadesService.findById(id);
-		return ResponseEntity.ok(cidades);
+	public ResponseEntity<Uf>  buscaPorId(@PathVariable Integer id){
+		Uf uf = ufService.findById(id);
+		return ResponseEntity.ok(uf);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Cidades> novaCidade(@Valid @RequestBody Cidades dto){
-		Cidades novaCidade = cidadesService.SalvaCidades(dto);
-		return ResponseEntity.ok(novaCidade);
+	public ResponseEntity<Uf> novasUf(@Valid @RequestBody Uf uf){
+		Uf novaUf = ufService.salvaUf(uf);
+		return ResponseEntity.ok(novaUf);
 	}
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Integer> deletaCidade(@PathVariable Integer id){
-    	cidadesService.DeletaCidades(id);
+    	ufService.deletaUf(id);
     	return ResponseEntity.ok(id);
     }
-    
+	
 }

@@ -10,11 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-<<<<<<< Updated upstream
-import javax.validation.constraints.Size;
-=======
->>>>>>> Stashed changes
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,8 +17,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name="cidades")
-public class Cidades implements Serializable{
+@Table(name="bairros")
+public class Bairros implements Serializable{
 
 	private static final long serialVersionUID = 1L;
     
@@ -31,30 +26,24 @@ public class Cidades implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "nome")
-	@NotNull
-<<<<<<< Updated upstream
-	@Size(min= 3, max = 30)
-	private  String nome;
+	@ManyToOne
+	@JoinColumn(name = "cidadeID")
+	public Cidades cidade;
 	
-	@Column(name = "uf")
-	@NotNull
-	private String uf;
-=======
-	public  String nome;
->>>>>>> Stashed changes
+	@Column(name="nome")
+    public String nome;
 	
-    @ManyToOne
-    @JoinColumn(name = "uf")
-	public Uf uf;
+	@Column(name="setor")
+    public int setor;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		result = prime * result + setor;
 		return result;
 	}
 
@@ -66,7 +55,12 @@ public class Cidades implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cidades other = (Cidades) obj;
+		Bairros other = (Bairros) obj;
+		if (cidade == null) {
+			if (other.cidade != null)
+				return false;
+		} else if (!cidade.equals(other.cidade))
+			return false;
 		if (id != other.id)
 			return false;
 		if (nome == null) {
@@ -74,13 +68,10 @@ public class Cidades implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (uf == null) {
-			if (other.uf != null)
-				return false;
-		} else if (!uf.equals(other.uf))
+		if (setor != other.setor)
 			return false;
 		return true;
 	}
-    
+
 	
 }

@@ -1,4 +1,4 @@
-CREATE TABLE parametriza(
+CREATE TABLE terrenoSujo(
 id INT AUTO_INCREMENT NOT NULL,
 valor_ufm DECIMAL(4,2) NOT NULL,
 valor_terreno DECIMAL(4,2) NOT NULL,

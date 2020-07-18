@@ -10,11 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-<<<<<<< Updated upstream
-import javax.validation.constraints.Size;
-=======
->>>>>>> Stashed changes
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,39 +17,38 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name="cidades")
-public class Cidades implements Serializable{
+@Table(name="logradouros")
+public class Logradouros implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-    
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "nome")
-	@NotNull
-<<<<<<< Updated upstream
-	@Size(min= 3, max = 30)
-	private  String nome;
+	@ManyToOne
+	@JoinColumn(name="bairroID")
+	public Bairros bairro;
 	
-	@Column(name = "uf")
-	@NotNull
-	private String uf;
-=======
-	public  String nome;
->>>>>>> Stashed changes
+	@ManyToOne
+	@JoinColumn(name="tipologradouro")
+	public TipoLogradouro tipologradouro;
 	
-    @ManyToOne
-    @JoinColumn(name = "uf")
-	public Uf uf;
+	@Column(name="nome")
+	public String nome;
+	
+	@Column(name="cep")
+	public String cep;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
+		result = prime * result + ((tipologradouro == null) ? 0 : tipologradouro.hashCode());
 		return result;
 	}
 
@@ -66,7 +60,17 @@ public class Cidades implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cidades other = (Cidades) obj;
+		Logradouros other = (Logradouros) obj;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
 		if (id != other.id)
 			return false;
 		if (nome == null) {
@@ -74,13 +78,13 @@ public class Cidades implements Serializable{
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (uf == null) {
-			if (other.uf != null)
+		if (tipologradouro == null) {
+			if (other.tipologradouro != null)
 				return false;
-		} else if (!uf.equals(other.uf))
+		} else if (!tipologradouro.equals(other.tipologradouro))
 			return false;
 		return true;
 	}
-    
-	
+
+
 }
