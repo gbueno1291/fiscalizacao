@@ -1,10 +1,10 @@
 package com.fiscalizacao.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fiscalizacao.models.Bairros;
 import com.fiscalizacao.repository.BairrosRepository;
+import com.fiscalizacao.repository.filter.BairrosFilter;
 import com.fiscalizacao.service.BairrosService;
 
 @RestController
@@ -30,10 +31,15 @@ public class BairrosController {
 	@Autowired
 	BairrosService service;
 	
+	//@GetMapping
+	//public ResponseEntity<List<Bairros>> pesquisar(){
+	//	List<Bairros> listbairro = repository.findAll();
+	//	return ResponseEntity.ok(listbairro);
+	//}
+	
 	@GetMapping
-	public ResponseEntity<List<Bairros>> pesquisar(){
-		List<Bairros> listbairro = repository.findAll();
-		return ResponseEntity.ok(listbairro);
+	public Page<Bairros> pesquisar(BairrosFilter bairrosFilter, Pageable pageable){
+		return repository.filtrar(bairrosFilter, pageable);
 	}
 	
 	@GetMapping("/{id}")

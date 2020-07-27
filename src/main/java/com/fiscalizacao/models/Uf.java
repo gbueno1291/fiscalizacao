@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @Table(name="uf")
 public class Uf implements Serializable{
 
@@ -32,44 +34,13 @@ public class Uf implements Serializable{
 	@NotNull
     public String nome;
 	
+	@Column(name="codigo")
+	@NotNull
+    public int codigo;
+	
 	@Column(name="sigla")
 	@NotNull
     public String sigla;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Uf other = (Uf) obj;
-		if (id != other.id)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (sigla == null) {
-			if (other.sigla != null)
-				return false;
-		} else if (!sigla.equals(other.sigla))
-			return false;
-		return true;
-	}
 	
-	
-    
 }

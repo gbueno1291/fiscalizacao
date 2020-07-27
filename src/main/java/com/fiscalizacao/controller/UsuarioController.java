@@ -47,7 +47,7 @@ public class UsuarioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Usuario> cadastrarUsuario(@Valid @RequestBody Usuario usuario) throws CPFInvalidoException, CPFExistenteException {
-	   Usuario gravaUsuario = usuarioService.SalvarUsuario(usuario);
+	   Usuario gravaUsuario = usuarioService.salvarUsuario(usuario);
        return ResponseEntity.ok(gravaUsuario);
 	}
 	

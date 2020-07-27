@@ -4,11 +4,7 @@ cupom:
     porta: 3306
     database: fiscaliza
     usuario: root
-<<<<<<< Updated upstream
-    senha: 
-=======
-    senha: 123456
->>>>>>> Stashed changes
+    senha: Solicit3
 spring.main.allow-bean-definition-overriding: true
         
 spring:

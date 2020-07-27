@@ -1,10 +1,10 @@
 package com.fiscalizacao.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,10 +32,12 @@ public class CidadesController {
 	CidadesService cidadesService;
 	
 	@GetMapping
-	public List<Cidades> findAll(CidadeFilter cidadeFilter){
-		 return cidadesRepository.filtrar(cidadeFilter);
+	public Page<Cidades> pesquisar(CidadeFilter cidadeFilter, Pageable pageable){
+		 return cidadesRepository.filtrar(cidadeFilter, pageable);
 		
 	}
+	
+
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Cidades>  buscaPorId(@PathVariable Integer id){

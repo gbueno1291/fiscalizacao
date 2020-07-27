@@ -1,10 +1,10 @@
 package com.fiscalizacao.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fiscalizacao.models.Uf;
 import com.fiscalizacao.repository.UfRepository;
+import com.fiscalizacao.repository.filter.UfFilter;
 import com.fiscalizacao.service.UfService;
 
 @RestController
@@ -30,11 +31,15 @@ public class UfController {
 	@Autowired
 	UfService ufService;
 	
-	@GetMapping
-	public ResponseEntity<List<Uf>> pesquisar(){
-		 List<Uf> ListUf = ufRepository.findAll();
-		 return ResponseEntity.ok(ListUf);
+	//@GetMapping
+	//public ResponseEntity<List<Uf>> pesquisar(){
+	//	 List<Uf> ListUf = ufRepository.findAll();
+	//	 return ResponseEntity.ok(ListUf);
 		
+	//}
+	@GetMapping
+	public Page<Uf> pesquisar(UfFilter ufFilter, Pageable pagable){
+		return ufRepository.filtrar(ufFilter, pagable);
 	}
 	
 	@GetMapping("/{id}")

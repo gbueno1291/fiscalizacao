@@ -25,7 +25,7 @@ public class UsuarioService {
 		return usuario;
 	}
 	
-	public Usuario SalvarUsuario(Usuario user) throws CPFInvalidoException, CPFExistenteException {
+	public Usuario salvarUsuario(Usuario user) throws CPFInvalidoException, CPFExistenteException {
 	   Usuario novoUser = new Usuario();
 	   if (!Utils.isCPF(user.getCpf())) {
 			throw new CPFInvalidoException();

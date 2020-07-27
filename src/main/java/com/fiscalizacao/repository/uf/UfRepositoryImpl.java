@@ -1,4 +1,4 @@
-package com.fiscalizacao.repository.cidade;
+package com.fiscalizacao.repository.uf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,37 +16,36 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
-import com.fiscalizacao.models.Cidades;
-import com.fiscalizacao.repository.filter.CidadeFilter;
+import com.fiscalizacao.models.Uf;
+import com.fiscalizacao.repository.filter.UfFilter;
 
-public class CidadesRepositoryImpl implements CidadesRepositoryQuery{
+public class UfRepositoryImpl implements UfRepositoryQuery {
 
-	
 	@PersistenceContext
 	private EntityManager manager;
 	
 	@Override
-	public Page<Cidades> filtrar(CidadeFilter cidadeFilter, Pageable pageable) {
+	public Page<Uf> filtrar(UfFilter ufFilter, Pageable pageable) {
 	    CriteriaBuilder buider = manager.getCriteriaBuilder();
-	    CriteriaQuery<Cidades> criteria = buider.createQuery(Cidades.class);
-	    Root<Cidades> root  = criteria.from(Cidades.class);
+	    CriteriaQuery<Uf> criteria = buider.createQuery(Uf.class);
+	    Root<Uf> root  = criteria.from(Uf.class);
 	    
-	    Predicate[] predicates = criarRestricoes(cidadeFilter, buider, root );
+	    Predicate[] predicates = criarRestricoes(ufFilter, buider, root );
 	    criteria.where(predicates);
 	    
-	    TypedQuery<Cidades> query = manager.createQuery(criteria);
+	    TypedQuery<Uf> query = manager.createQuery(criteria);
 	    adicionarRestricoesDePaginacao(query, pageable);
 	    
-	    return new PageImpl<>(query.getResultList(), pageable, total(cidadeFilter));
+	    return new PageImpl<>(query.getResultList(), pageable, total(ufFilter));
 		
 		
 	}
 
 	
-	private Predicate[] criarRestricoes(CidadeFilter cidadeFilter, CriteriaBuilder buider, Root<Cidades> root) {
+	private Predicate[] criarRestricoes(UfFilter ufFilter, CriteriaBuilder buider, Root<Uf> root) {
 		List<Predicate> predicates = new ArrayList<>();
-		if(!StringUtils.isEmpty(cidadeFilter.getNome())) {
-			predicates.add(buider.like(buider.lower(root.get("nome")), "%" + cidadeFilter.getNome().toLowerCase() + "%"));
+		if(!StringUtils.isEmpty(ufFilter.getNome())) {
+			predicates.add(buider.like(buider.lower(root.get("nome")), "%" + ufFilter.getNome().toLowerCase() + "%"));
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
@@ -55,7 +54,7 @@ public class CidadesRepositoryImpl implements CidadesRepositoryQuery{
 
 	
 
-	private void adicionarRestricoesDePaginacao(TypedQuery<Cidades> query, Pageable pageable) {
+	private void adicionarRestricoesDePaginacao(TypedQuery<Uf> query, Pageable pageable) {
 		int paginaAtual = pageable.getPageNumber();
 		int totalRegistroPorPagina = pageable.getPageSize();
 		int primeiroRegistroDaPagina = paginaAtual * totalRegistroPorPagina;
@@ -65,19 +64,17 @@ public class CidadesRepositoryImpl implements CidadesRepositoryQuery{
 		
 	}
 	
-	private Long total(CidadeFilter cidadeFilter) {
+	private Long total(UfFilter ufFilter) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Long> criteria = builder.createQuery(long.class);
-		Root<Cidades> root = criteria.from(Cidades.class);
+		Root<Uf> root = criteria.from(Uf.class);
 		
-		Predicate[] predicates = criarRestricoes(cidadeFilter, builder, root);
+		Predicate[] predicates = criarRestricoes(ufFilter, builder, root);
 		criteria.where(predicates);
 		
 	    criteria.select(builder.count(root));
 	    return manager.createQuery(criteria).getSingleResult();
 
 	}
-
-
 
 }

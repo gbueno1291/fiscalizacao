@@ -6,12 +6,11 @@ CREATE TABLE IF NOT EXISTS contribuinte (
     celular VARCHAR(14) NOT NULL,
     telefone VARCHAR(14) NOT NULL,
     email VARCHAR(40) NOT NULL,
-    cep VARCHAR(12) NOT NULL,
-    logradouro VARCHAR(40)  NOT NULL,
+    logradouroid INT  NOT NULL,
     numero VARCHAR(20) NOT NULL,
     complemento VARCHAR(10),
-    bairro  VARCHAR(40) NOT NULL,
-    cidade VARCHAR(30) NOT NULL,
-    uf VARCHAR(2) NOT NULL,
-    PRIMARY KEY(id)
+    latitude VARCHAR(20),
+    longitude VARCHAR(20),
+    PRIMARY KEY(id),
+    CONSTRAINT fk_logradouro_contribuinte FOREIGN KEY (logradouroid) REFERENCES logradouros(id)
 )  ENGINE=INNODB;

@@ -1,7 +1,5 @@
 package com.fiscalizacao.exceptionHandler;
 
-<<<<<<< Updated upstream
-
 public class BackendException extends Exception{
 
     private static final long serialVersionUID = 1L;
@@ -54,14 +52,5 @@ public class BackendException extends Exception{
     public String getErrorField() {
         return String.format("%s", params);
     }
-=======
-public class BackendException extends RuntimeException{
-	public BackendException(String message) {
-		super(message);
-	}
-	
-	public BackendException(String message, Throwable causa) {
-		super(message, causa);
-	}
->>>>>>> Stashed changes
+
 }
