@@ -2,7 +2,7 @@ cupom:
   db:
     ip: 127.0.0.1
     porta: 3306
-    database: fiscalizacao
+    database: fiscaliza
     usuario: root
     senha: Solicit3
 spring.main.allow-bean-definition-overriding: true
@@ -43,9 +43,9 @@ cupom:
   db:
     ip: 127.0.0.1
     porta: 3306
-    database: fiscalizacao
+    database: fiscaliza
     usuario: root
-    senha: 
+    senha: 123456
 spring.main.allow-bean-definition-overriding: true
 
      

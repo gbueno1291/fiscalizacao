@@ -1,8 +1,0 @@
-CREATE TABLE bairros(
- id INT AUTO_INCREMENT NOT NULL,
- cidadeID INT NOT NULL,
- nome VARCHAR(40) NOT NULL,
- setor INT NOT NULL,
- PRIMARY KEY(id),
- CONSTRAINT fk_cidade_bairro FOREIGN KEY(cidadeID) REFERENCES cidades(id)
-)ENGINE=INNODB;

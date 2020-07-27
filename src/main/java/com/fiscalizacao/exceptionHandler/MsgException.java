@@ -1,25 +1,15 @@
 package com.fiscalizacao.exceptionHandler;
 
 public class MsgException extends BackendException {
-	
-	private String codigoErro;
-	private String mensagem;
-	private String mensageSemCodigo;
-	private String acao;
-	
-	public MsgException(String message, String codigoErro, String mensagem, String mensageSemCodigo, String acao) {
-		
-		super(message);
-		this.codigoErro = codigoErro;
-		this.mensagem = mensagem;
-		this.mensageSemCodigo = mensageSemCodigo;
-		this.acao = acao;
-	}
+	private static final long serialVersionUID = 1L;
 
-	public MsgException(String message, String acao) {
-		super(message);
-		this.acao = acao;
-	}
+	public MsgException(Exception e) {
+        super(Errors.ERRO_99);
+    }
+
+    public MsgException() {
+        super(Errors.ERRO_99);
+    }
 
 
 	
