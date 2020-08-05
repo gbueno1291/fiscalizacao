@@ -1,10 +1,10 @@
 package com.fiscalizacao.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,8 +34,8 @@ public class ContribuinteController {
 	ContribuinteService contribuinteService;
 	
 	@GetMapping
-	public List<Contribuinte> pesquisa(ContribuinteFilter contribuinteFilter){
-		return contribuinteRepository.fitrar(contribuinteFilter);
+	public Page<Contribuinte> pesquisa(ContribuinteFilter contribuinteFilter, Pageable pageable){
+		return contribuinteRepository.fitrar(contribuinteFilter, pageable);
 		
 	}
 	
@@ -47,7 +47,7 @@ public class ContribuinteController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException {
+	public ResponseEntity<Contribuinte> cadastrarContribuinte(@Valid @RequestBody Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException{
 		Contribuinte salvaContribuinte = contribuinteService.salvaContribuinte(contribuinte);
        return ResponseEntity.ok(salvaContribuinte);
 	}

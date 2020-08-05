@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Imovel implements Serializable {
 
    /**
-	 * 
+	 * DESENVOLVIDO POR GILIARDI BUENO
 	 */
 	private static final long serialVersionUID = 1L;
    
@@ -65,13 +65,9 @@ public class Imovel implements Serializable {
    @NotNull
    private float valorvenalimovel;
    
-   @Column(name="cep")
-   @NotNull
-   private String cep;
-   
-   @Column(name="logradouro")
-   @NotNull
-   private String logradouro;
+   @ManyToOne
+   @JoinColumn(name="logradouroid")
+   private Logradouros logradouro;
    
    @Column(name="numero")
    @NotNull
@@ -81,17 +77,11 @@ public class Imovel implements Serializable {
    @NotNull
    private String complemento;
    
-   @Column(name="bairro")
-   @NotNull
-   private String bairro;
+   @Column(name="latitude")
+   private String latitude;
    
    
-   @Column(name="cidade")
-   @NotNull
-   private String cidade;
-   
-   @Column(name="uf")
-   @NotNull
-   private String uf;
+   @Column(name="longitude")
+   private String longitude;
    
 }

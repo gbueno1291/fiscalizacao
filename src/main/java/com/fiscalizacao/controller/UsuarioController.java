@@ -26,6 +26,8 @@ import com.fiscalizacao.service.UsuarioService;
 @RequestMapping("/user")
 public class UsuarioController {
 
+	 private static String caminhoimagem ="/home/giliardi/Projetos/fiscalizacao/upload/usuarios";
+	
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	

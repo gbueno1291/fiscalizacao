@@ -19,9 +19,9 @@ import lombok.Setter;
 @Table(name="emitente")
 public class Emitente implements Serializable{
    /* Autor: Giliardi Bueno*/
-	
-	public static final long SerialVersionUID = 1L;
-	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

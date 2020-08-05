@@ -2,6 +2,7 @@ package com.fiscalizacao.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.fiscalizacao.exceptionHandler.CPFExistenteException;
 import com.fiscalizacao.exceptionHandler.CPFInvalidoException;
 import com.fiscalizacao.models.Contribuinte;
@@ -24,12 +25,12 @@ public class ContribuinteService {
 		return contribuinte;
 	}
 	
-	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException {
+	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException{
 		Contribuinte novoContribuinte = new Contribuinte();
-			if (!Utils.isCPF(contribuinte.getCpf())) {
-				throw new CPFInvalidoException();
-			}
-			try {
+		if(!Utils.isCPF(contribuinte.getCpf())) {
+			throw new CPFInvalidoException();
+		}
+		try {
 				novoContribuinte = contribuinteRepository.save(contribuinte);
 				
 			} catch (Exception e) {
@@ -37,7 +38,8 @@ public class ContribuinteService {
 			}
 
 		return novoContribuinte;
-	}
+		}
+	
 	
 	public void deletaContribuinte(Integer id) {
 		contribuinteRepository.deleteById(id);

@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -51,13 +53,9 @@ public class Contribuinte implements Serializable {
 	@NotNull
     private String email; 
 	
-	@Column(name="cep")
-	@NotNull
-    private String cep; 
-	
-	@Column(name="logradouro")
-	@NotNull
-    private String logradouro; 
+	@ManyToOne
+	@JoinColumn(name="logradouroid")
+    private Logradouros logradouro; 
 	
 	@Column(name="numero")
 	@NotNull
@@ -67,17 +65,12 @@ public class Contribuinte implements Serializable {
 	@NotNull
     private String complemento; 
 	
-	@Column(name="bairro")
-	@NotNull
-    private String bairro;
+	@Column(name = "latitude")
+	private String latitude;
 	
-	@Column(name="cidade")
-	@NotNull
-    private String cidade; 
+	@Column(name = "logitude")
+	private String logitude;
 	
-	@Column(name="uf")
-	@NotNull
-    private String uf; 
 	
 	@OneToMany(mappedBy="contribuinteid", fetch = FetchType.LAZY)
 	public List<Imovel> imovel;

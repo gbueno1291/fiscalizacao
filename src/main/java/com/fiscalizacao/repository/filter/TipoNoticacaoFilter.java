@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ContribuinteFilter {
-    private String nome;
-    private String cpf;
+public class TipoNoticacaoFilter {
+
+	private String nome;
+	
 }
