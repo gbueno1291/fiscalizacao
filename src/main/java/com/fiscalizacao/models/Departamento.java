@@ -59,5 +59,6 @@ public class Departamento  implements Serializable{
 	
 	@Column(name = "longitude")
 	private String longitude;
+
 	
 }
