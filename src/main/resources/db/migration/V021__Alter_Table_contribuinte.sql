@@ -1,2 +1,0 @@
-ALTER TABLE contribuinte
-ADD CONSTRAINT Un_cpf UNIQUE(cpf);

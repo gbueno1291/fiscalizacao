@@ -37,7 +37,7 @@ app:
 server:
   servlet:
     context-path: /fiscalizacao-api
-  port: 9090
+  port: 9091
 ---
 cupom:
   db:

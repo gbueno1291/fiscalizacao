@@ -1,6 +1,7 @@
 package com.fiscalizacao.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,16 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @Table(name="imovel")
 public class Imovel implements Serializable {
 
@@ -32,56 +32,69 @@ public class Imovel implements Serializable {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    
-   @Column(name="cadastro")
-   @NotNull
-   public int cadastro;
+   @Column(name = "matricula")
+   public String matricula;
    
    @ManyToOne
-   @JsonBackReference
-   @JoinColumn(name="contribuinteid")
-   public Contribuinte contribuinteid;
-   
-   @Column(name="setor")
-   @NotNull
-   private int setor;
-   
-   @Column(name="quadra")
-   @NotNull
-   private int quadra;
-   
-   @Column(name="lote")
-   @NotNull
-   private String lote;
-   
-   @Column(name="valorvenalterreno")
-   @NotNull
-   private float valorvenalterreno;
-   
-   @Column(name="valorvenaledificacao")
-   @NotNull
-   private float valorvenaledificacao;
-   
-   @Column(name="valorvenalimovel")
-   @NotNull
-   private float valorvenalimovel;
+   @JoinColumn(name = "contribuinte_id")
+   public Contribuinte contribuinte ;
    
    @ManyToOne
-   @JoinColumn(name="logradouroid")
-   private Logradouros logradouro;
+   @JoinColumn(name = "endereco_id")
+   public Endereco endereco;
    
-   @Column(name="numero")
-   @NotNull
-   private String numero;
+   @Column(name = "setor")
+   public int setor;
    
-   @Column(name="complemento")
-   @NotNull
-   private String complemento;
+   @Column(name = "quadra")
+   public int quadra;
    
-   @Column(name="latitude")
-   private String latitude;
+   @Column(name = "lote")
+   public String lote;
    
+   @Column(name = "unidade")
+   public int unidade;
    
-   @Column(name="longitude")
-   private String longitude;
+   @Column(name = "valor_venal_edificacao")
+   public BigDecimal valorVenalEdificacao;
+   
+   @Column(name = "valor_venal_terreno")
+   public BigDecimal valorVenalTerreno;
+   
+   @Column(name = "valor_venal_excedente")
+   public BigDecimal valorVenalExcedente;
+   
+   @Column(name = "valor_venal_imovel")
+   public BigDecimal valorVenalImovel;
+   
+   @Column(name = "fracao_ideal")
+   public int fracaoIdeal;
+   
+   @Column(name = "total_area_edificada")
+   public BigDecimal totalAreaEdificada ;
+   
+   @Column(name = "espaco_reservado")
+   public BigDecimal espacoReservado ;
+   
+   @Column(name = "area_terreno")
+   public BigDecimal areaTerreno ;
+   
+   @Column(name = "testada_terreno")
+   public BigDecimal testadaTerreno;
+   
+   @Column(name = "testada_taxa")
+   public BigDecimal testadaTaxa;
+   
+   @Column(name = "profundidade")
+   public BigDecimal profundidade;
+   
+   @Column(name = "lado_esquerdo")
+   public BigDecimal ladoEsquerdo;
+   
+   @Column(name = "lado_direito")
+   public BigDecimal ladoDireito;
+   
+   @Column(name = "zoneamento")
+   public String zoneamento;
    
 }
