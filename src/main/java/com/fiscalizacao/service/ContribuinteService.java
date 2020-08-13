@@ -25,16 +25,13 @@ public class ContribuinteService {
 		return contribuinte;
 	}
 	
-	public Contribuinte salvaContribuinte(Contribuinte contribuinte) throws CPFInvalidoException, CPFExistenteException{
+	public Contribuinte salvaContribuinte(Contribuinte contribuinte){
 		Contribuinte novoContribuinte = new Contribuinte();
-		if(!Utils.isCPF(contribuinte.getCpf())) {
-			throw new CPFInvalidoException();
-		}
 		try {
 				novoContribuinte = contribuinteRepository.save(contribuinte);
 				
 			} catch (Exception e) {
-				throw new CPFExistenteException();
+				e.printStackTrace();
 			}
 
 		return novoContribuinte;

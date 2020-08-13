@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.fiscalizacao.models.Bairros;
 import com.fiscalizacao.repository.BairrosRepository;
+import com.fiscalizacao.validate.PessoaValidate;
 
 @Service
 public class BairrosService {
@@ -12,10 +13,14 @@ public class BairrosService {
 	@Autowired
 	BairrosRepository bairrosRepository;
 	
+	@Autowired PessoaValidate pessoaValidate;
+	
+	
 	public Bairros findById(Integer id) {
 		Bairros bairros = new Bairros();
 		try {
 			bairros = bairrosRepository.findById(id).orElse(null);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,9 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.util.StringUtils;
 
-import com.fiscalizacao.models.Contribuinte;
 import com.fiscalizacao.models.Imovel;
-import com.fiscalizacao.repository.filter.ContribuinteFilter;
 import com.fiscalizacao.repository.filter.ImovelFilter;
 
 public class ImovelRepositoryImpl implements ImovelRepositoryQuery {

@@ -1,39 +1,46 @@
 package com.fiscalizacao.models;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@Table(name="contribuinte")
-public class Contribuinte implements Serializable {
-	
+@Table(name = "endereco")
+public class Endereco implements Serializable {
+
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id; 
+	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="pessoa_id")
-    private Pessoa	pessoa; 
+	@JsonBackReference
+	@JoinColumn(name = "pessoa_id")
+	private Pessoa pessoa;
 	
-
-	@OneToMany(mappedBy="contribuinte", fetch = FetchType.LAZY)
-	public List<Imovel> imovel;
+	@ManyToOne
+	@JoinColumn(name = "logradouro_id")
+	private Logradouros logradouro;
 	
-
+	
+	@Column(name = "numero")
+	public String numero;
+	
+	@Column(name = "complemento")
+	public String complemento;
 }
