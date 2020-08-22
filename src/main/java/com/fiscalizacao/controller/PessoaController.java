@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fiscalizacao.models.Pessoa;
 import com.fiscalizacao.repository.PessoaRepository;
 import com.fiscalizacao.repository.filter.PessoaFilter;
+import com.fiscalizacao.response.PessoaResponse;
 import com.fiscalizacao.service.PessoaService;
 
 @RestController
@@ -36,9 +37,9 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Pessoa> buscaPorId(@PathVariable Integer id){
-		Pessoa buscapessoa = service.findById(id);
-		return ResponseEntity.ok(buscapessoa);
+	public ResponseEntity<PessoaResponse> buscaPorId(@PathVariable Integer id){
+		
+		return ResponseEntity.ok(service.findById(id));
 	}
 	
 	@PostMapping

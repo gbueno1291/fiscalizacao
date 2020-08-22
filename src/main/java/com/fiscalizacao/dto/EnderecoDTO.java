@@ -1,6 +1,7 @@
 package com.fiscalizacao.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fiscalizacao.models.Logradouros;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,13 +11,8 @@ import lombok.Setter;
 @Setter
 public class EnderecoDTO  {
 
-	private String cep;
-	private String logradouro;
+	private LogradouroDTO logradouro;
+	private String numero;
 	private String complemento;
-	private String bairro;
-	private String localidade;
-	private String uf;
-	private String ibge;
-	private String gia;
 	
 }

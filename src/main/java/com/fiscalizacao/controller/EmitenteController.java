@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fiscalizacao.exceptionHandler.EmitenteCadastradoException;
+import com.fiscalizacao.mappers.EmitenteMapper;
 import com.fiscalizacao.models.Emitente;
 import com.fiscalizacao.repository.EmitenteRepository;
+import com.fiscalizacao.request.EmitenteRequest;
 import com.fiscalizacao.service.EmitenteService;
 
 
@@ -30,6 +33,8 @@ public class EmitenteController {
 	
 	@Autowired
 	EmitenteService emitenteService;
+	
+
 	
 	@GetMapping
 	public ResponseEntity<List<Emitente>> findAll(){
@@ -44,10 +49,8 @@ public class EmitenteController {
 	}
 
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Emitente> cadastrarEmitente(@Valid @RequestBody Emitente emitente) {
-		Emitente gravaEmitente = emitenteService.SalvaEmitente(emitente);
-       return ResponseEntity.ok(gravaEmitente);
+	public ResponseEntity<Emitente> cadastrarEmitente(@Valid @RequestBody EmitenteRequest emitenteRequest) throws EmitenteCadastradoException {		
+       return ResponseEntity.ok(emitenteService.salvaEmitente(emitenteRequest));
 	}
 	
     @DeleteMapping("/{id}") 
