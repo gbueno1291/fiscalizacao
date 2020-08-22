@@ -2,7 +2,7 @@ CREATE TABLE logradouros(
 id INT AUTO_INCREMENT NOT NULL,
 bairroID INT NOT NULL,
 tipologradouro INT NOT NULL,
-nome VARCHAR(40) NOT NULL,
+nome VARCHAR(70) NOT NULL,
 cep VARCHAR(12) NOT NULL,
 PRIMARY KEY(id),
 CONSTRAINT fk_bairro_rua FOREIGN KEY (bairroID) REFERENCES bairros(id),
