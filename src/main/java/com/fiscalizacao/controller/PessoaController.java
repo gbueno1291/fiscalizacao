@@ -37,9 +37,9 @@ public class PessoaController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<PessoaResponse> buscaPorId(@PathVariable Integer id){
-		
-		return ResponseEntity.ok(service.findById(id));
+	public ResponseEntity<Pessoa> buscaPorId(@PathVariable Integer id){
+		Pessoa pessoa = service.findById(id);
+		return ResponseEntity.ok(pessoa);
 	}
 	
 	@PostMapping

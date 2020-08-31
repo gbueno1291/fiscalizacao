@@ -10,4 +10,6 @@ public class PessoaFilter {
 	private String nome;
 	private String cpf;
 	private String rg;
+	private String logradouro;
+	private String numero;
 }

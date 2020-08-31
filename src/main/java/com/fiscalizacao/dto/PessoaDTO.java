@@ -1,20 +1,17 @@
 package com.fiscalizacao.dto;
 
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class PessoaDTO {
-	
-	private String nome;
-    private String cpf;
-    private String rg;
-    private String logo;
-	private TipoPessoaDTO tipoPessoa;
-	private List<ContatoDTO> contato;
-	private List<EnderecoDTO> endereco;
-
+    public String nome;
+    public String rg;
+    public String cpf;
+    public String logradouro;
+    public String numero;
+    public String complemento;
+    public String cep;
+    public String bairro;
+    public String cidade;
+    public String telefone;
+    public String email;
+    public String telefoneRecado;
+    public String responsavelRecado;
 }

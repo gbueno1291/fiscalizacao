@@ -32,16 +32,10 @@ public class Imovel implements Serializable {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    
-   @Column(name = "matricula")
-   public String matricula;
-   
    @ManyToOne
    @JoinColumn(name = "contribuinte_id")
    public Contribuinte contribuinte ;
-   
-   @ManyToOne
-   @JoinColumn(name = "endereco_id")
-   public Endereco endereco;
+
    
    @Column(name = "setor")
    public int setor;
@@ -72,9 +66,6 @@ public class Imovel implements Serializable {
    
    @Column(name = "total_area_edificada")
    public BigDecimal totalAreaEdificada ;
-   
-   @Column(name = "espaco_reservado")
-   public BigDecimal espacoReservado ;
    
    @Column(name = "area_terreno")
    public BigDecimal areaTerreno ;

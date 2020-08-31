@@ -42,10 +42,7 @@ public class Departamento  implements Serializable{
     @Column(name = "responsavel")
     @NotNull
 	private String responsavel;
-    
-    @ManyToOne
-    @JoinColumn(name = "logradouroid")
-	private Logradouros logradouro;
+   
 	
 	@Column(name = "numero")
     @NotNull

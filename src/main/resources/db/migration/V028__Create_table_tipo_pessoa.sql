@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS tipo_pessoa (
-    id INT AUTO_INCREMENT,
-    descricao VARCHAR(70) NOT NULL,
-   PRIMARY KEY(id)
-)  ENGINE=INNODB;

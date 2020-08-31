@@ -52,6 +52,14 @@ public class PessoaRepositoryImpl implements PessoaRepositoryQuery{
 			predicates.add(buider.equal(buider.lower(root.get("rg")), pessoaFilter.getRg()));
 		}
 		
+		if(!StringUtils.isEmpty(pessoaFilter.getLogradouro())) {
+			predicates.add(buider.like(buider.lower(root.get("logradouro")),"%" + pessoaFilter.getLogradouro() + "%"));
+		}
+		
+		if(!StringUtils.isEmpty(pessoaFilter.getNumero())) {
+			predicates.add(buider.equal(buider.lower(root.get("numero")), pessoaFilter.getNumero()));
+		}
+		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 	

@@ -3,10 +3,8 @@ package com.fiscalizacao.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fiscalizacao.mappers.PessoaMapper;
 import com.fiscalizacao.models.Pessoa;
 import com.fiscalizacao.repository.PessoaRepository;
-import com.fiscalizacao.response.PessoaResponse;
 
 @Service
 public class PessoaService {
@@ -14,20 +12,16 @@ public class PessoaService {
 	@Autowired
 	PessoaRepository repository;
 	
-	@Autowired
-	PessoaMapper pessoaMapper;
 	
-	public PessoaResponse findById(Integer id) {
-		PessoaResponse pessoaResponse = new PessoaResponse();
-		
-		
+	
+	public Pessoa findById(Integer id) {
+		Pessoa listapessoas = new Pessoa();
 		try {
-			Pessoa pessoa  = repository.findById(id).orElse(null);
-			pessoaResponse.setPessoa(pessoaMapper.convert(pessoa));
+			listapessoas  = repository.findById(id).orElse(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return pessoaResponse;
+		return listapessoas;
 	}
 	
 	public Pessoa salvaPessoa(Pessoa pessoa) {

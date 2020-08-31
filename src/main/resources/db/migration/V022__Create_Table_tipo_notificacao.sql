@@ -1,6 +1,0 @@
-CREATE TABLE IF NOT EXISTS tipo_notificacao (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(60) NOT NULL,
-    textopadrao TEXT NOT NULL,
-    prazo  INT NOT NULL
-)  ENGINE=INNODB;

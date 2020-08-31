@@ -1,8 +1,11 @@
 CREATE TABLE IF NOT EXISTS imovel (
     id INT AUTO_INCREMENT,
-    matricula VARCHAR(15),
     contribuinte_id int NOT NULL,
-    endereco_id INT  NOT NULL,
+    logradouro VARCHAR(80),
+    numero VARCHAR(10),
+    complemento VARCHAR(50),
+    bairro VARCHAR(80),
+    cidade VARCHAR(70),
     setor INT NOT NULL,
     quadra INT NOT NULL,
     lote VARCHAR(8) NOT NULL,
@@ -22,6 +25,5 @@ CREATE TABLE IF NOT EXISTS imovel (
     lado_direito DECIMAL(8,2),
     zoneamento VARCHAR(20),
     PRIMARY KEY(id),
-    CONSTRAINT fk_contribuinte_imovel FOREIGN KEY (contribuinte_id) REFERENCES contribuinte(id),
-    CONSTRAINT fk_endereco_imovel FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+    CONSTRAINT fk_contribuinte_imovel FOREIGN KEY (contribuinte_id) REFERENCES contribuinte(id)
 )  ENGINE=INNODB;
