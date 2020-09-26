@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fiscalizacao.models.Imovel;
+import com.fiscalizacao.models.Pessoa;
 import com.fiscalizacao.repository.ImovelRepository;
 import com.fiscalizacao.repository.filter.ImovelFilter;
+import com.fiscalizacao.repository.filter.PessoaFilter;
 import com.fiscalizacao.service.ImovelService;
 
 @RestController
@@ -31,8 +35,8 @@ public class ImovelController {
 	ImovelService imovelService;
 	
 	@GetMapping
-	public List<Imovel> findAll(ImovelFilter imovelFilter){
-		return imovelRepository.filtrar(imovelFilter);
+	public Page<Imovel> findAll(ImovelFilter imovelFilter, Pageable pageable){
+		return imovelRepository.filtrar(imovelFilter, pageable);
 		 
 	}
 	

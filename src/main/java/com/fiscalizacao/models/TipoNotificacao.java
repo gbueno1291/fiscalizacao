@@ -45,9 +45,7 @@ public class TipoNotificacao implements Serializable {
 	private int prazo;
 	
 	@ManyToOne
-	@JoinColumn(name = "departamentoid")
-	private Departamento departamento;
-	
-	
+	@JoinColumn(name = "setor_id")
+	private SetorDepartamento setor;
 
 }

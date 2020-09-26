@@ -1,6 +1,7 @@
 package com.fiscalizacao.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -31,31 +33,45 @@ public class Departamento  implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
     
-    @Column(name = "nome")
-    @NotNull
-	private String nome;
+    @ManyToOne
+    @JoinColumn(name = "emitente_id")
+    private Emitente emitente;
     
-    @Column(name = "divisao")
+    @Column(name = "nome_departamento")
     @NotNull
-	private String divisao;
+	private String nomeDepartamento;
     
-    @Column(name = "responsavel")
+    @Column(name = "logradouro_departamento")
     @NotNull
-	private String responsavel;
-   
+	private String logradouroDepartamento;
 	
-	@Column(name = "numero")
+	@Column(name = "numero_departamento")
     @NotNull
-	private String numero;
+	private String numero_departamento;
 	
-	@Column(name = "complemento")
-	private String complemento;
+	@Column(name = "complemento_departamento")
+	private String complemento_departamento;
 	
-	@Column(name = "latitude")
-	private String latitude;
+	@Column(name = "bairro_departamento")
+	private String bairro_departamento;
 	
-	@Column(name = "longitude")
-	private String longitude;
-
+	@Column(name = "cep_departamento")
+	private String cep_departamento;
+	
+    @Column(name = "telefone_departamento")
+    @NotNull
+	private String telefone_departamento;
+    
+    @Column(name = "email_departamento")
+    @NotNull
+	private String email_departamento;
+    
+    @Column(name = "diretor_departamento")
+    @NotNull
+	private String diretor_departamento;
+    
+    @OneToMany(mappedBy = "departamento")
+    private List<SetorDepartamento> setor;
+    
 	
 }

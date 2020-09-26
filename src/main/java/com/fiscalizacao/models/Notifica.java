@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-@Table(name = "notifica")
+@Table(name = "notificacao")
 public class Notifica implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -32,39 +32,28 @@ public class Notifica implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
-	@Column(name = "data_hora")
-	private Date dataHora;
-	
-	
 	@ManyToOne
-	@JoinColumn(name = "tiponotificacao_id")
+    @JoinColumn(name = "fiscal_id")
+    private Usuario fiscal;
+    
+	@ManyToOne
+	@JoinColumn(name = "tpnotificacao_id")
 	private TipoNotificacao tipoNotificacao;
 	
 	@ManyToOne
 	@JoinColumn(name = "imovel_id")
 	private Imovel imovel;
+
 	
-	@ManyToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
-	
-	@Column(name="multa")
-	private BigDecimal multa;
-	
-	@Column(name="servico")
-    private BigDecimal servico;
-	
-	@Column(name="total")
-    private BigDecimal total;
+	@Column(name = "data_hora_emissao")
+	private Date dataHora;
+
+	@Column(name="observacao")
+	private String observacao;
     
     @Column(name="vencimento")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date vencimento;
-    
-    @Column(name="status")
-    private String status;
-    
     
     @Column(name="nome_notificado")
     private String nomeNotificado;
@@ -78,11 +67,7 @@ public class Notifica implements Serializable{
     @Column(name="foto_notificacao")
     private String fotoNotificacao;
     
-    
-    @Column(name="cancelado")
-    private String cancelado;
-    
-    @Column(name="quem_cancelou")
-    private int quemCancelou;
+    @Column(name="status")
+    private String status;
 
 }

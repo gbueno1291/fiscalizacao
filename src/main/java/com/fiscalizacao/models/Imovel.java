@@ -1,15 +1,12 @@
 package com.fiscalizacao.models;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -31,61 +28,69 @@ public class Imovel implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
-   
-   @ManyToOne
-   @JoinColumn(name = "contribuinte_id")
-   public Contribuinte contribuinte ;
 
+   @Column(name = "nome_contribuinte")
+   private String nomeContribuinte;
+   
+   @Column(name = "cpf_contribuinte")
+   private String cpfContribuinte;
+   
+   @Column(name = "logradouro_imovel")
+   private String logradouroImovel;
+   
+   @Column(name = "numero_imovel")
+   private String numeroImovel;
+   
+   @Column(name = "complemento_imovel")
+   private String complementoImovel;
+   
+   @Column(name = "cep_imovel")
+   private String cepImovel;
+   
+   @Column(name = "bairro_imovel")
+   private String bairroImovel;
    
    @Column(name = "setor")
-   public int setor;
+   private String setor ;
    
    @Column(name = "quadra")
-   public int quadra;
+   private String quadra;
    
    @Column(name = "lote")
-   public String lote;
+   private String lote;
    
-   @Column(name = "unidade")
-   public int unidade;
+   @Column(name = "logradouro_contribuinte")
+   private String logradouroContribuinte;
+   
+   @Column(name = "numero_contribuinte")
+   private String numeroContribuinte;
+   
+   @Column(name = "complemento_contribuinte")
+   private String complementoContribuinte;
+   
+   @Column(name = "bairro_contribuinte")
+   private String bairroContribuinte;
+   
+   @Column(name = "cep_contribuinte")
+   private String cepContribuinte;
+   
+   @Column(name = "cidade_contribuinte")
+   private String cidadeContribuinte;
    
    @Column(name = "valor_venal_edificacao")
-   public BigDecimal valorVenalEdificacao;
+   private String valorVenalEdificacao;
    
    @Column(name = "valor_venal_terreno")
-   public BigDecimal valorVenalTerreno;
-   
-   @Column(name = "valor_venal_excedente")
-   public BigDecimal valorVenalExcedente;
+   private String valorVenalTerreno;
    
    @Column(name = "valor_venal_imovel")
-   public BigDecimal valorVenalImovel;
-   
-   @Column(name = "fracao_ideal")
-   public int fracaoIdeal;
+   private String valorVenalImovel;
    
    @Column(name = "total_area_edificada")
-   public BigDecimal totalAreaEdificada ;
+   private String totalAreaEdificada;
+   
    
    @Column(name = "area_terreno")
-   public BigDecimal areaTerreno ;
-   
-   @Column(name = "testada_terreno")
-   public BigDecimal testadaTerreno;
-   
-   @Column(name = "testada_taxa")
-   public BigDecimal testadaTaxa;
-   
-   @Column(name = "profundidade")
-   public BigDecimal profundidade;
-   
-   @Column(name = "lado_esquerdo")
-   public BigDecimal ladoEsquerdo;
-   
-   @Column(name = "lado_direito")
-   public BigDecimal ladoDireito;
-   
-   @Column(name = "zoneamento")
-   public String zoneamento;
-   
+   private String areaTerreno;
+  
 }
